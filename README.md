@@ -1,6 +1,12 @@
 
 # GoodService-API
 
+
+
+![Api](./imagens/api.png)
+
+
+
 ## Descrição
 
 Este projeto é uma API para gerenciamento e agendamento de serviços.
@@ -44,12 +50,28 @@ sequelize db:migrate
 sequelize db:seed:all
 ```
 
+
+
+## Conexão com o front-end
+
+1. No arquivo GoodServiceApi/index.js altere o cors para o ip do front-end
+
+
+```javascript
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '<Seu_ip_aqui>');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+```
+
+
 ## Execução
 
 Para executar o projeto em modo de desenvolvimento, execute o seguinte comando:
 
 ```bash
-npm start
+nodemon index.js
 ```
 
 O projeto será executado na porta especificada no arquivo de configuração.
@@ -82,6 +104,13 @@ O projeto será executado na porta especificada no arquivo de configuração.
 
 # GoodService - Front-End
 
+
+![Web](./imagens/front.png)
+
+![Mobile](./imagens/front-mobile.png)
+
+
+
 ## Descrição
 
 O Projeto GoodService e uma aplicação web para listar e servições e fazer agendamentos.
@@ -110,6 +139,22 @@ cd GoodService
 npm install
 ```
 
+
+## Conexão com o back-end
+
+1. No arquivo GoodService/src/utils/api.js coloque a ip do backend no axios.create
+
+```javascript
+const api = axios.create({
+baseURL:<Seu_ip_aqui>,
+timeout: 10000,
+headers: {
+'Content-Type': 'application/json',
+},
+});
+```
+
+
 ## Execução
 
 Para executar o projeto em modo de desenvolvimento, execute o seguinte comando:
@@ -118,7 +163,6 @@ Para executar o projeto em modo de desenvolvimento, execute o seguinte comando:
 npm run dev
 ```
 
-O projeto será executado no endereço `http://localhost:3000`.
 
 ## Estrutura de Diretórios e Arquivos
 
