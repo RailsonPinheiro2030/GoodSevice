@@ -2,7 +2,7 @@ import axios from "axios";
 import { faker } from "@faker-js/faker/locale/pt_BR";
 
 const api = axios.create({
-    baseURL: 'http://localhost:3000/',
+    baseURL: 'http://192.168.1.229:3000/',
     timeout: 10000,
     headers: {
       'Content-Type': 'application/json',

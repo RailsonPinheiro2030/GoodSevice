@@ -46,7 +46,7 @@ const Cards = () => {
             <Placeholder.Paragraph rows={5} graph="image" active />
           ) : (
             <div className='content'>
-              <img src={item?.image} alt="Imagem" />
+              <img src={item?.image} alt="Imagem"  loading="lazy"/>
               <div>
                 <ul className='list-top'>
                   <li>

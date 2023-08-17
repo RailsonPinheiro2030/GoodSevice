@@ -1,7 +1,8 @@
 import './styles.css';
-import { Drawer, Button, Avatar, List } from 'rsuite';
+import { Drawer, Button, Avatar, Divider } from 'rsuite';
 import { useState, useEffect } from 'react';
 import {getScheduledId} from '../../utils/api'
+import CalendarCompontent from '../calendar';
 
 
 
@@ -13,7 +14,7 @@ const DrawerComponent = (props) =>{
         
         const fetchScheduleId = async () => {
             try {
-              const response = await getScheduledId(props.data.id);
+              const response = await getScheduledId(props?.data?.id);
               setData(response);
               
             } catch (error) {
@@ -31,12 +32,6 @@ const DrawerComponent = (props) =>{
         <Drawer open={props.open}  onClose={() => props.setOpen(false)} className='drawer'>  
             <Drawer.Header>
             <Drawer.Title>Detalhes</Drawer.Title>
-            <Drawer.Actions>
-                <Button onClick={()=>props.setOpen(false)}>Cancel</Button>
-                <Button appearance="primary">
-                Confirm
-                </Button>
-            </Drawer.Actions>
             </Drawer.Header>
             <Drawer.Body className='drawer-body'>
             <div className='drawer-container'>
@@ -62,20 +57,9 @@ const DrawerComponent = (props) =>{
                         <span>{props?.data?.price}</span>
                     </div>
                 </div>
-                <div className="appointment-container">
-                    <strong className={data?.length > 0? 'appointment-title': 'appointment-title-none'}>last appointments</strong>
-                    <ul className="appointment-list">
-                        {data.slice(0,4).map(item => (
-                        <li key={item?.id} className="appointment-item">
-                            <span>{item?.date}</span>
-                            <span>{item?.time}</span>
-                        </li>
-                        ))}
-                    </ul>
-                </div>
-
-                
+                <Divider/>
             </div>
+            <CalendarCompontent data={data}/>
             </Drawer.Body>
         </Drawer>
     )
