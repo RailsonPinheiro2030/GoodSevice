@@ -1,0 +1,21 @@
+{
+  "name": "api-services",
+  "version": "1.0.0",
+  "description": "Api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "node --watch --no-warnings index.js"
+  },
+  "author": "RailsonPinheiro",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "sequelize": "^6.32.1",
+    "sequelize-cli": "^6.6.1",
+    "sqlite3": "^5.1.6",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0",
+    "uid": "^2.0.2"
+  }
+}

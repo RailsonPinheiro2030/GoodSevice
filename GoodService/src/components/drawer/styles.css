@@ -1,0 +1,117 @@
+.drawer{
+    width: 400px!important;
+}
+
+.drawer-body{
+    margin: 0px!important;
+    padding: 20px!important;
+}
+
+
+
+.drawer-container{
+    width: 100%;
+    
+}
+
+
+
+.drawer-container >:first-child{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.drawer-container>:first-child >:nth-child(2){
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+}
+
+.drawer-container>:first-child >:nth-child(2) >span{
+    font-size: 0.8em;
+    color: gray;
+}
+
+
+.drawer-row {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10%;
+    padding: 5px;
+    width: 100%;
+    justify-content: center;
+}
+  
+.drawer-column {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border: 0.8px solid #ececec;
+    margin: 5px;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.drawer-column > strong{
+    color: #808080;
+    font-size: 1em;
+}
+.drawer-column >span{
+    color: #b3b3b3;
+    font-size: 0.9em;
+}
+  
+
+
+.appointment-container {
+    margin: 2em;
+}
+  
+.appointment-title {
+    margin-bottom: 1em;
+    color: #808080;
+}
+
+.appointment-title-none{
+    display: none;
+}
+
+
+.appointment-list {
+    list-style: none;
+    width: 100%;
+    border: 1px solid #e9e9e9;
+    border-bottom: none;
+    border-radius: 5px;
+}
+  
+.appointment-item {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid #e9e9e9;
+    padding: 10px;
+}
+  
+.appointment-item > span{
+    color: #8f8d8d;
+    font-size: 0.9em;
+}
+
+
+
+@media (max-width: 767px) {
+    .drawer{
+        width: 80%!important;
+    }
+    .drawer-column > span{
+        font-size: 0.6em;
+    }
+    
+    .drawer-column > strong{
+        font-size: 0.7em;
+    }
+}

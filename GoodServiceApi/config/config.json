@@ -1,0 +1,32 @@
+{
+  "development": {
+    "username": "user_test",
+    "password": "userttest",
+    "database": "database",
+    "host": "127.0.0.1",
+    "dialect": "sqlite",
+    "storage": "src/db/database.sqlite",
+    "seederStorage": "sequelize",
+    "seeders-path": "src/seeders"
+  },
+  "test": {
+    "username": "user_test",
+    "password": "userttest",
+    "database": "database",
+    "host": "127.0.0.1",
+    "dialect": "sqlite",
+    "storage": "src/db/database.sqlite",
+    "seederStorage": "sequelize",
+    "seeders-path": "src/seeders"
+  },
+  "production": {
+    "username": "user_test",
+    "password": "userttest",
+    "database": "database",
+    "host": "127.0.0.1",
+    "dialect": "sqlite",
+    "storage": "src/db/database.sqlite",
+    "seederStorage": "sequelize",
+    "seeders-path": "src/seeders"
+  }
+}

@@ -1,0 +1,18 @@
+
+.container-home{
+    background-color: #f1faf9;
+    width: 100%;
+    min-height: 100vh;
+    flex: 1;
+    padding: 40px;
+    overflow-x: hidden;
+}
+
+
+@media (max-width: 767px) {
+    .container-home{
+        padding: 5px;
+    }
+}
+
+  
