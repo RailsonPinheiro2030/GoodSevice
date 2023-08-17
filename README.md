@@ -52,20 +52,6 @@ sequelize db:seed:all
 
 
 
-## Conexão com o front-end
-
-1. No arquivo GoodServiceApi/index.js altere o cors para o ip do front-end
-
-
-```javascript
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '<Seu_ip_aqui>');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
-});
-```
-
-
 ## Execução
 
 Para executar o projeto em modo de desenvolvimento, execute o seguinte comando:
@@ -106,6 +92,8 @@ O projeto será executado na porta especificada no arquivo de configuração.
 
 
 ![Web](./imagens/front.png)
+
+![Drawer](./imagens/front-drawer.png)
 
 ![Mobile](./imagens/front-mobile.png)
 

@@ -38,13 +38,21 @@ ScheduledService.getAllSchedule = async () => {
 
 
 ScheduledService.createSchedule = async (service_id, date, time) => {
+
+  let res = await ScheduledService.getAllSchedule()
+
+  let existingSchedules = res.filter(schedule => schedule.service_id === service_id && schedule.date === date);
+
+  if (existingSchedules.length > 0){
+    return 'Já existe um agendamento para este serviço na data especificada.'
+  }
+
   let data = {
     service_id: service_id,
     date: date,
     time: time,
     status: 'Agendado'
   };
-
 
   const newScheduledService = await ScheduledService.create(data);
   return newScheduledService;
