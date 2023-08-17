@@ -20,7 +20,7 @@ const ButtomNav = () =>{
               <span className="menu-item-label">Scheduled</span>
             </Button>
 
-            <Button  className="menu-item one" onClick={()=>navigate('/Home')}>
+            <Button  className="menu-item one" onClick={()=>navigate('/')}>
               <span className="material-icons"><ExploreIcon/></span>
               <span className="menu-item-label">Explorar</span>
             </Button>
