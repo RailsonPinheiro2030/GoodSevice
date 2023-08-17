@@ -26,7 +26,7 @@ const ButtomNav = () =>{
             </Button>
 
 
-            <Button className="menu-item tree" onClick={()=>navigate('/Profile')}>
+            <Button className="menu-item tree">
               <span className="material-icons"><AdminIcon/></span>
               <span className="menu-item-label">Profile</span>
             </Button>
