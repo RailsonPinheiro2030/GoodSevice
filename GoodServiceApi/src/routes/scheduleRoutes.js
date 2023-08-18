@@ -45,14 +45,63 @@ const ScheduledService = require('../models/Scheduled');
  *                   type: string
  */
 router.post('/create', async (req, res) => {
-    const { id, date, time } = req.body;
-    const response = await ScheduledService.createSchedule(id, date, time);
+  const { id, date, time } = req.body;
+  const response = await ScheduledService.createSchedule(id, date, time);
   
-    if (response) {
-      res.status(201).json(response);
-    } else {
-      res.status(404).json({ error: 'Serviço não encontrado' });
-    }
+  if(response.success){
+    res.status(201).json({message: response.message, data: response.data});
+  }else{
+    res.status(404).json({error: response.message});
+  }
+
+})
+
+
+
+/**
+ * @swagger
+ * /api/schedule/delete:
+ *   delete:
+ *     tags: [Agendamento]
+ *     summary: Deletar um agendamento de serviço
+ *     parameters:
+ *       - in: query
+ *         name: id
+ *         required: true
+ *         description: ID do agendamento para deletar
+ *         schema:
+ *           type: string
+ *       - in: query
+ *         name: date
+ *         required: true
+ *         description: Data do agendamento para deletar
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Agendamento deletado com sucesso
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: 'Appointment deleted successfully'
+ *       400:
+ *         description: Erro ao deletar agendamento
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: 'Error message'
+ */
+
+router.delete('/delete', async (req, res) => {
+  const { id, date } = req.query;
+  
+  const response = await ScheduledService.deleteSchedule(id, date);
+  
+  if (response.success) {
+    res.status(200).json({message: response?.message});
+  } else {
+    res.status(400).json({error: response?.message});
+  }
 });
   
 
@@ -118,25 +167,20 @@ router.get('/all', async (req, res) =>{
  *         content:
  *           application/json:
  *             example:
- *               success: false
- *               message: 'No data found for the provided service_id'
+ *               message: 'Service not found'
  */
                       
 
 router.get('/filter', async (req, res) =>{
   const{service_id} = req.query 
-
   const filterData = await ScheduledService.getFilterScheduleId(service_id);
 
-  if (filterData) {
-    return res.status(200).json(filterData);
-    
+  if(filterData.success){
+    res.status(200).json({data: filterData.data})
   }else{
-    return res.status(404).json({
-      success: false,
-      message: 'No data found for the provided service_id'
-    });
+    res.status(404).json({error: filterData.message})
   }
+
   
 })
   
