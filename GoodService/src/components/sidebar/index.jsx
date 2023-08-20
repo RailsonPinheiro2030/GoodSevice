@@ -13,6 +13,7 @@ const SideBar = () =>{
 
     useEffect(()=>{
         setNav(location?.pathname)
+        
     },[location])
 
     return(
@@ -27,7 +28,7 @@ const SideBar = () =>{
                 <li className={nav === '/' ? 'links actived': 'links'} onClick={()=>navigate('/')}>
                 <ExploreIcon style={{color: nav === '/' ? '#4d4dff': ''}}/><span>Explore</span>
                 </li>
-                <li className={nav === '/Scheduled' ? 'links actived': 'links'}>
+                <li className={nav === '/schedules' ? 'links actived': 'links'} onClick={()=>navigate('/schedules')}>
                     <TagAuthorizeIcon/><span>Scheduled</span>
                 </li>
                 <li className={nav === '/Profile' ? 'links actived': 'links'}>

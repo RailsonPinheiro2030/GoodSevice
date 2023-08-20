@@ -11,11 +11,11 @@ const DrawerComponent = (props) =>{
 
 
     useEffect(()=>{
-        
+        setData([])
         const fetchScheduleId = async () => {
             try {
               const response = await getScheduledId(props?.data?.id);
-              setData(response);
+              setData(response?.data);
               
             } catch (error) {
               console.log(error)

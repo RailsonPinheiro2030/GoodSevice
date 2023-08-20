@@ -1,4 +1,4 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes, Op } = require('sequelize');
 const sequelize = require('../db/database');
 
 
@@ -91,6 +91,30 @@ Services.scheduleService = async (id, date, time) => {
     return newScheduled;
   }
   return null;
+};
+
+
+
+
+Services.searchService = async(parameters) => {
+  try {
+    const searchCondition = {
+      [Op.or]: [
+        sequelize.where(sequelize.fn('LOWER', sequelize.col('name')), 'LIKE', `%${parameters.toLowerCase()}%`),
+        sequelize.where(sequelize.fn('LOWER', sequelize.col('professional')), 'LIKE', `%${parameters.toLowerCase()}%`)
+      ]
+    };
+
+    const services = await Services.findAll({ where: searchCondition });
+
+    if (services.length === 0) {
+      return { success: false, message: 'Not found' };
+    }
+
+    return { success: true, message: 'Service found', data: services };
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 

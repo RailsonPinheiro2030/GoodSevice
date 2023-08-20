@@ -7,17 +7,19 @@ const CalendarCompontent = (props) =>{
 
 
     useEffect(() => {
-        const newEvents = props.data.reduce((acc, event) => {
-            // A data do evento é convertida de "dd/mm/yyyy" para "yyyy-mm-dd" para facilitar a comparação e o armazenamento.
-            const date = event.date.split('/').reverse().join('-');
-        
-            if (!acc[date]) {
-                acc[date] = [];
-            }
-            acc[date].push(event);
-            return acc;
-        }, {});
-        setEvents(newEvents);
+        if (Array.isArray(props?.data)) {
+            const newEvents = props?.data?.reduce((acc, event) => {
+                
+                const date = event?.date?.split('/').reverse().join('-');
+    
+                if (!acc[date]) {
+                    acc[date] = [];
+                }
+                acc[date]?.push(event);
+                return acc;
+            }, {});
+            setEvents(newEvents);
+        }
     }, [props]);
 
 

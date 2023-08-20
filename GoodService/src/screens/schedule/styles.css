@@ -1,0 +1,40 @@
+
+.container-schedule{
+    background-color: #f1faf9;
+    width: 100%;
+    min-height: 100vh;
+    flex: 1;
+    padding: 40px;
+    overflow-x: hidden;
+}
+
+
+.container-schedule >:first-child{
+    display: flex; 
+    flex-direction: row; 
+    width: 100%; 
+    justify-content: space-between; 
+    background-color: #fff; 
+    margin-bottom: 10px; 
+    padding: 5px;
+    border-radius: 5px; 
+    max-height: 100px;
+}
+
+.div-row-one{
+    display: flex;
+    flex-direction: row;
+    margin-left: 3px;
+}
+
+.container-schedule >:first-child >:nth-child(2) >:first-child{
+    margin-right: 5px;  
+}
+
+
+
+@media (max-width: 767px) {
+    .container-schedule{
+        padding: 5px;
+    }
+}

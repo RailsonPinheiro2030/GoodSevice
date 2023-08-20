@@ -47,7 +47,6 @@ const ScheduledService = require('../models/Scheduled');
 router.post('/create', async (req, res) => {
   const { id, date, time } = req.body;
   const response = await ScheduledService.createSchedule(id, date, time);
-  
   if(response.success){
     res.status(201).json({message: response.message, data: response.data});
   }else{

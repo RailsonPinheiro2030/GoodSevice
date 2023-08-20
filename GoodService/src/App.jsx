@@ -7,7 +7,7 @@ import {
   Navigate,
   Outlet
 } from 'react-router-dom';
-import { HomeScreen} from './screens';
+import { HomeScreen, ScheduledScrenn} from './screens';
 
 
 function App() {
@@ -17,6 +17,7 @@ function App() {
     <React.Fragment>
         <Routes>    
         <Route path="/" element={<Layout><HomeScreen /></Layout>} />
+        <Route path='/schedules' element={<Layout><ScheduledScrenn/></Layout>}/>
         </Routes>
     </React.Fragment>
   )

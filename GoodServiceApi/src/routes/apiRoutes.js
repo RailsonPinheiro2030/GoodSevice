@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
 
 /**
  * @swagger
- * /api/services:
+ * /api/service:
  *   get:
  *     tags: [Serviços]
  *     summary: Retorna todos os serviços disponíveis
@@ -52,10 +52,80 @@ router.get('/', (req, res) => {
  */
 
 
-router.get('/services', async (req, res) => {
+router.get('/service', async (req, res) => {
   const allData = await serviceModel.getAllData();
   res.json(allData);
 });
+
+
+
+
+
+
+/**
+ * @swagger
+ * /api/service/search:
+ *   get:
+ *     tags: [Serviços]
+ *     summary: Busca serviços por nome ou profissional
+ *     parameters:
+ *       - in: query
+ *         name: parameters
+ *         required: true
+ *         schema:
+ *           type: string
+ *           description: Nome do serviço ou profissional a ser pesquisado
+ *     responses:
+ *       200:
+ *         description: Lista de serviços que correspondem à pesquisa
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       id:
+ *                         type: string
+ *                       name:
+ *                         type: string
+ *                       description:
+ *                         type: string
+ *                       duration:
+ *                         type: string
+ *                       price:
+ *                         type: string
+ *                       professional:
+ *                         type: string
+ *                       availability:
+ *                         type: array
+ *                         items:
+ *                           type: string
+ *       404:
+ *         description: Nenhum serviço encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ */
+
+router.get('/service/search', async (req, res) => {
+    const {parameters} = req.query;
+    let response =  await serviceModel.searchService(parameters)
+    if(response?.success){
+      res.status(200).json({data: response.data}) 
+    }else{
+      res.status(404).json({error: response.message})
+    }
+});
+
+
 
 
 /**

@@ -19,12 +19,16 @@ const renderMenuNotifiations = ({ onClose, left, top, className }, ref) => {
 
 
 const NavBar = () =>{
+    const[nav, setNav] = useState(null);
+    const location = useLocation();
 
-   
+    useEffect(()=>{
+        setNav(location?.pathname)
+    },[location])
 
     return(
         <nav>
-        <h6>Home</h6>    
+        <h6>{nav === '/' ? 'Home': 'Schedules'}</h6>    
         <div>
             <Whisper placement="bottomEnd" trigger="click" speaker={renderMenuNotifiations}>
                 <Badge content={10}>

@@ -2,7 +2,7 @@ import axios from "axios";
 import { faker } from "@faker-js/faker/locale/pt_BR";
 
 const api = axios.create({
-    baseURL: 'SEU_IP_AQUI',
+    baseURL: 'http://localhost:3000',
     timeout: 10000,
     headers: {
       'Content-Type': 'application/json',
@@ -23,7 +23,7 @@ const generateLocation = () =>{
 
 export const getItems = async () => {
   try {
-    let response = await api.get("/api/services");
+    let response = await api.get("/api/service");
     const itemsWithImages = response.data.map((item, index) => {
       const stars = Math.floor(Math.random() * 6)
       const image = fetchImage(index);
@@ -42,4 +42,15 @@ export const getItems = async () => {
 export const getScheduledId = async (service_id) =>{
   let response = await api.get(`/api/schedule/filter?service_id=${service_id}`);
   return response.data
+}
+
+export const getSearchService = async (parameters) =>{
+  let response =  await api.get(`/api/service/search?parameters=${parameters}`);
+  return response.data
+  
+}
+
+export const scheduleService = async (data)=>{
+  let response = await api.post('/api/schedule/create', data);
+  return response;
 }

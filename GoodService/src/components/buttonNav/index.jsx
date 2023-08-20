@@ -15,12 +15,12 @@ const ButtomNav = () =>{
         <div className="container-nav-button">
           <nav className="menu-nav">
             
-            <Button className="menu-item tow">
+            <Button className="menu-item tow" onClick={()=>navigate('/schedules')}>
               <span className="material-icons"><TagAuthorizeIcon/></span>
               <span className="menu-item-label">Scheduled</span>
             </Button>
 
-            <Button  className="menu-item one" onClick={()=>navigate('/Home')}>
+            <Button  className="menu-item one" onClick={()=>navigate('/')}>
               <span className="material-icons"><ExploreIcon/></span>
               <span className="menu-item-label">Explorar</span>
             </Button>
