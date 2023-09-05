@@ -86,7 +86,8 @@ O projeto será executado na porta especificada no arquivo de configuração.
 - `config`: Diretório contendo arquivos de configuração do projeto.
 - `src`: Diretório contendo os arquivos fonte do projeto.
 
-
+##Link de acesso
+ https://good-service.onrender.com/docs/
 
 # GoodService - Front-End
 
